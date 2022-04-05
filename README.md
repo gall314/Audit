@@ -243,3 +243,74 @@ Related article:
 
 Check this:
 [Lighthouse reports - Apr 4th](./external-audit/lighthouse-apr-4)
+
+## Responsive Images
+
+Of course you should use modern image formats like WebP and AVIF. They can maintain a low file size and high quality at the same time. Also, you should use the SVG format. Please find the requested pictures in the links below:
+
+- https://app.sellusyourjewelry.com/static/e05863a524e961a17ed93fa636ceb083/60bd3/logo-900.jpg
+- https://app.sellusyourjewelry.com/static/59c01aaee7a9f23cd0e595cc6ffef6e8/0fdf4/rolex.jpg
+- https://app.sellusyourjewelry.com/static/5124e67b4f1f7b87cbca7b622bc788e1/0fdf4/audemars-piguet.jpg
+- https://app.sellusyourjewelry.com/static/f77b0e2131cef09c8ad5ca08ae7c8c18/0fdf4/patek-philippe.jpg
+- https://app.sellusyourjewelry.com/static/52e66c5e1e7a0a1292ac95b9eb45398b/0fdf4/tiffany-and-co.jpg
+- https://app.sellusyourjewelry.com/static/ed98307d49d2cab223197a17ac955dad/0fdf4/van-cleef-and-arpels.jpg
+- https://app.sellusyourjewelry.com/static/995b8eb3a0d3274c976e0a2b2b31582e/0fdf4/cartier.jpg
+- https://app.sellusyourjewelry.com/static/ce1cdf3ae716f6abbe5f4ad8de7025d2/92b04/watch-quote.jpg
+- https://app.sellusyourjewelry.com/static/19c3cb794b80e6c7c5dc4671ed8a8331/869a6/sell-your-emerald-diamond-img.jpg
+- https://app.sellusyourjewelry.com/static/e65b5da24f2188cf49983d594e8f1e55/5c8f1/sell-your-round-cut-diamond-img.jpg
+- https://app.sellusyourjewelry.com/static/668b3ced333617407663659ea4341c5a/869a6/sell-your-square-cut-diamond-img.jpg
+- https://app.sellusyourjewelry.com/static/9c8f605ee684fd05e4282e50827be986/869a6/sell-your-gold-coin-img.jpg
+- https://app.sellusyourjewelry.com/static/fe01ccc62a2b706b7e705fe6c54185ee/869a6/sell-sterling-silver-hollowware-img.jpg
+- https://app.sellusyourjewelry.com/static/aa69252b1750dcbb5ff497df7837f9ca/869a6/sell-sterling-silver-flatware-img.jpg
+
+> **Greg:** I don't understand what you mean.
+> 
+> As far as I can tell, all the above images are delivered in 3 formats (original - JPG) and 2 modern web formats (WebP and AVIF). Please explain what you have in mind.
+> 
+> I'll give you my more detailed explanation. I'll just take the first one as an example but it's true about all of them as I've checked.
+https://app.sellusyourjewelry.com/static/e05863a524e961a17ed93fa636ceb083/60bd3/logo-900.jpg
+> 
+> So there is the AVIF version of this image:
+> https://app.sellusyourjewelry.com/static/e05863a524e961a17ed93fa636ceb083/a7f94/logo-900.avif
+> and the WebP
+> https://app.sellusyourjewelry.com/static/e05863a524e961a17ed93fa636ceb083/677b5/logo-900.webp
+> 
+> I have a responsive versions for different screen sizes:
+> 
+> 200 pixels width: https://app.sellusyourjewelry.com/static/e05863a524e961a17ed93fa636ceb083/a7f94/logo-900.avif
+> 360 pixels width: https://app.sellusyourjewelry.com/static/e05863a524e961a17ed93fa636ceb083/dcee6/logo-900.avif
+> 375 pixels width: https://app.sellusyourjewelry.com/static/e05863a524e961a17ed93fa636ceb083/82007/logo-900.avif
+> 414 pixels width: https://app.sellusyourjewelry.com/static/e05863a524e961a17ed93fa636ceb083/ef7cc/logo-900.avif
+> 640 pixels width: https://app.sellusyourjewelry.com/static/e05863a524e961a17ed93fa636ceb083/59f14/logo-900.avif
+> 720 pixels width: https://app.sellusyourjewelry.com/static/e05863a524e961a17ed93fa636ceb083/f937a/logo-900.avif
+> 750 pixels width: https://app.sellusyourjewelry.com/static/e05863a524e961a17ed93fa636ceb083/0994a/logo-900.avif
+> 768 pixels width: https://app.sellusyourjewelry.com/static/e05863a524e961a17ed93fa636ceb083/54193/logo-900.avif
+> 828 pixels width: https://app.sellusyourjewelry.com/static/e05863a524e961a17ed93fa636ceb083/54622/logo-900.avif
+> 900 pixels width: https://app.sellusyourjewelry.com/static/e05863a524e961a17ed93fa636ceb083/d69c7/logo-900.avif
+> 
+> When I check it in the inspector mode, I can see that my browser download the AVIF format (as it's the newest, most prefered one):
+
+**Jacek Mayer**
+
+I agree that many of the images are in the right format, such as avif but on this page provided below, I have something like this (please see the screenshot).
+![Responsive Image Issue](./external-audit/responsive-image-issue.png)
+
+JPG is not a valid format, because is not responsive. JPG is a good choice for lossy compression of still images (currently the most popular). Prefer PNG when more precise reproduction of the image is required, or WebP/AVIF if both better reproduction and higher-compression are required. I think you can always use WebP because I think that is a excellent choice for both images and animated images. WebP offers much better compression than PNG or JPEG with support for higher color depths, animated frames, transparency etc. AVIF offers slightly better compression, but is not quite as well-supported in browsers and does not support progressive rendering. I think you or someone should convert images to the WebP format. WebP is natively supported in Google Chrome, Safari, Firefox, Edge, the Opera browser, and many other tools and software libraries. 
+
+https://app.sellusyourjewelry.com/sell-rolex-near-me/
+
+https://cdn.sellusyourjewelry.com/w/2016/02/w519380.jpg 
+
+- [x] **Action Point:** _Greg_: Done. I've setup the Cloud Front CDN to detect supported formats (`accept` header) and
+   serve AVIF or WebP version of the image
+
+```shell
+$ curl -I -H "accept:image/avif,image/webp,*/*" -X HEAD https://cdn.sellusyourjewelry.com/w/2016/02/w519380.jpg | grep content-type
+content-type: image/avif
+
+$ curl -I -H "accept:image/webp,*/*" -X HEAD https://cdn.sellusyourjewelry.com/w/2016/02/w519380.jpg | grep content-type
+content-type: image/webp
+
+$ curl -I -H "accept:*/*" -X HEAD https://cdn.sellusyourjewelry.com/w/2016/02/w519380.jpg | grep content-type
+content-type: image/jpeg
+```
