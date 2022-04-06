@@ -314,3 +314,83 @@ content-type: image/webp
 $ curl -I -H "accept:*/*" -X HEAD https://cdn.sellusyourjewelry.com/w/2016/02/w519380.jpg | grep content-type
 content-type: image/jpeg
 ```
+
+##  SEO Report - Apr 5th
+
+[Check this file](./external-audit/SEOReport.xlsx)
+
+### 4 pages returned 4XX status code
+>A 4xx error means that a webpage cannot be accessed. This is usually the result of broken links. These errors prevent users and search engine robots from accessing your webpages, and can negatively affect both user experience and search engine crawlability. This will in turn lead to a drop in traffic driven to your website. Please be aware that crawler may detect a working link as broken if your website blocks our crawler from accessing it. This usually happens due to the following reasons:
+> - DDoS protection system
+> - Overloaded or misconfigured server
+> If a webpage returns an error, remove all links leading to the error page or replace it with another resource.
+
+| Page URL                                                      | HTTP Code |
+|---------------------------------------------------------------|----------:|
+| https://app.sellusyourjewelry.com/mailto:sell@grayandsons.com |       404 |
+| https://app.sellusyourjewelry.com/tel:+13057706955            |       404 |
+| https://app.sellusyourjewelry.com/tel:+17862664763            |       404 |
+| https://app.sellusyourjewelry.com/tel:13057706955             |       404 |
+
+- **Note:** _Greg_: I assume this is just a reporting tool **false** alert.\
+  `tel:` and `mailto:` are valid URI scheme (according to [RFC 6068](https://datatracker.ietf.org/doc/html/rfc6068) and [RFC 3966](https://datatracker.ietf.org/doc/html/rfc3966)\
+- No **Action Points** here
+
+### 8 issues with blocked internal resources in robots.txt|
+> Blocked resources are resources (e.g., CSS, JavaScript, image files, etc.) that are blocked from crawling by a "Disallow" directive in your robots.txt file. By disallowing these files, you're preventing search engines from accessing them and, as a result, properly rendering and indexing your webpages. This, in return, may lead to lower rankings. |To unblock a resource, simply update your robots.txt file.
+ 
+| Page URL                           | Resource URL                                                                                       | Resource Type   |
+|------------------------------------|----------------------------------------------------------------------------------------------------|-----------------|
+| https://app.sellusyourjewelry.com/ | https://app.sellusyourjewelry.com/polyfill-72d81e4027e868f3361c.js                                 | script          |
+| https://app.sellusyourjewelry.com/ | https://app.sellusyourjewelry.com/component---src-pages-index-js-f7389a6bb194269f0fbf.js           | script          |
+| https://app.sellusyourjewelry.com/ | https://app.sellusyourjewelry.com/463c400049cbfdd14f898fba69d967c9e731d23c-b9aa90120213876dd0b9.js | script          |
+| https://app.sellusyourjewelry.com/ | https://app.sellusyourjewelry.com/360d16cecfd5cbd6c515218dcb04b857a750a9f3-564791d5f0d31fac72ef.js | script          |
+| https://app.sellusyourjewelry.com/ | https://app.sellusyourjewelry.com/3e21c5c24aeb54a47cc676b9a555a27f2d0a45f6-7893997014f361b35cbc.js | script          |
+| https://app.sellusyourjewelry.com/ | https://app.sellusyourjewelry.com/app-cabaa08f27d5f6a746da.js                                      | script          |
+| https://app.sellusyourjewelry.com/ | https://app.sellusyourjewelry.com/framework-5437ccd489aa07bb49eb.js                                | script          |
+| https://app.sellusyourjewelry.com/ | https://app.sellusyourjewelry.com/webpack-runtime-e043eb6cd565b6ab8de4.js                          | script          |
+
+- **Note:** _Greg_: Our `robots.txt` allow Googlebot and bingbot to process `JS` files. All other bots are forbidden. 
+  Please, let me know what other robots would you like to allow to crawl the JS files.
+```
+User-agent: *
+Disallow: /*.js$
+Disallow: /*.css$
+
+User-agent: Googlebot
+Allow: *.js
+Allow: *.css
+
+User-agent: bingbot
+Allow: *.js
+Allow: *.css
+```
+
+### 1 page has low text-HTML ratio      
+> Your text to HTML ratio indicates the amount of actual text you have on your webpage compared to the amount of code. This issue is triggered when your text to HTML is 10% or less.
+> 
+> Search engines have begun focusing on pages that contain more content. That's why a higher text to HTML ratio means your page has a better chance of getting a good position in search results.
+> 
+>  Less code increases your page's load speed and also helps your rankings. It also helps search engine robots crawl your website faster."|Split your webpage's text content and code into separate files and compare their size. If the size of your code file exceeds the size of the text file, review your page's HTML code and consider optimizing its structure and removing embedded scripts and styles.
+
+| Page URL                           | Ratio   |
+|------------------------------------|---------|
+| https://app.sellusyourjewelry.com/ | 0.04    |
+
+- **Note**: I don't think that the ratio `0.04` is accurate. Please, recheck the tool that you use. Two independent methods
+ give me the text / HTML ratio at the level of about `12%`
+  - [SiteGuru - Text to HTML ratio](https://www.siteguru.co/seo-academy/text-to-html-ratio): `12.4%`
+  - Direct approach (using console / inspect mode):\
+ ```javascript
+(Math.round(10000 * document.getElementsByTagName('body')[0].outerText.length / document.getElementsByTagName('body')[0].outerHTML.length ) / 100 ) + '%'
+12.87%
+```
+
+### 1 URL with a permanent redirect    
+> Although using permanent redirects (a 301 or 308 redirect) is appropriate in many situations (for example, when you move a website to a new domain, redirect users from a deleted page to a new one, or handle duplicate content issues), we recommend that you keep them to a reasonable minimum. Every time you redirect one of your website's pages, it decreases your crawl budget, which may run out before search engines can crawl the page you want to be indexed. Moreover, too many permanent redirects can be confusing to users.|Review all URLs with a permanent redirect. Change permanent redirects to a target page URL where possible.
+ 
+| Page URL with Redirect Link        | Initial Redirect URL                                             | Final Destination URL                                             | Status code |
+|------------------------------------|------------------------------------------------------------------|-------------------------------------------------------------------|-------------|
+| https://app.sellusyourjewelry.com/ | https://app.sellusyourjewelry.com/what-are-you-looking-to-sell-2 | https://app.sellusyourjewelry.com/what-are-you-looking-to-sell-2/ | 301         |
+
+- **Note**: I don't see any internal link without trailing slashes. Can you tell me where did you find the above link?
