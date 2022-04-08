@@ -134,7 +134,7 @@ That is how we end-up with the HTML like this:
 A: **NO**. WebP is supported by `91.38%` users (Globally) - check [Can I Use - WebP Format](https://caniuse.com/?search=webp)
 
 ### Q: Is this 91.38% a real value? We target US market, a developed country
-A: **Yes**, in our case it even worse. Above `10%` of our visitors use web browsers that don't support WebP format
+A: **Yes**, in our case it's even worse. Above `10%` of our visitors use web browsers that don't support WebP format
 
 WebP: Partial support in **Safari** refers to being limited to macOS 11 Big Sur and later.
 
@@ -180,11 +180,11 @@ Our Google Analytics data for SellUsYourJewelry (`2021-01-01` to `2022-04-07`) s
 |-------|-------:|------:|
 | Total | 16,933 | 4.17% |
 
-**At least 10% of our visitors use not browsers that don't support WebP or AVIF**
+**At least 10% of our visitors use browsers that don't support modern image formats like `WebP` or `AVIF`**
 
 ### Q: Why would we use Avif?
 
-A: **It has better quality with less size!** And it's supported by almost `70%` web browsers.
+A: **It has better quality with less size!** And it's supported by almost `70%` web browsers. check [Can I Use - AVIF Format](https://caniuse.com/?search=avif)
 
 Check our real life example:
 
@@ -228,8 +228,11 @@ br compressed HTML snippet:\
 The total cost is `146` additional `bytes`. This is all for serving 3 formats in 8 different sizes (375, 414, 640, 720, 750, 768, 828, 1000)
 
 Check another example:
-https://app.sellusyourjewelry.com/static/861be12f879e75d89c13e6c5556456ff/00dc1/gray-and-sons-request-catalog-banner.avif\
+
+https://app.sellusyourjewelry.com/static/861be12f879e75d89c13e6c5556456ff/00dc1/gray-and-sons-request-catalog-banner.avif
+
 https://app.sellusyourjewelry.com/static/861be12f879e75d89c13e6c5556456ff/10e7d/gray-and-sons-request-catalog-banner.webp
 
 ![AVIF - smaller and better](./images/avif-vs-webp.png)
 AVIF is ~2KB smaller and has a better quality (less visible artifacts, i.e. around the text)
+

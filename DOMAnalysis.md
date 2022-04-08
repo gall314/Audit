@@ -133,3 +133,10 @@ console.log(icons)
 > - Implement infinite scroll.
 > 
 > What do you think ?
+
+It's worth investigating
+
+> Greg, you should focus only on page requests right now.
+
+One more disclaimer on this topic. The # of request that Gatsby makes is also a result
+of implementing this recommendation [Web.dev: Prefetch resources to speed up future navigations](https://web.dev/link-prefetch/)
