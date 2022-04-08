@@ -110,3 +110,26 @@ console.log(icons)
 ## Optimizations
 - Homepage: init: 1422, after: 1438 (+16 -> lazy loaded)
 - After optimizations: 1215  
+
+## Jacek additional input:
+
+> Ok, so I would like to ask you a couple of things. As you know the website can have a large DOM size due to a variety of reasons. The most common ones are:
+>
+> - Poorly coded plugins or themes
+> - DOM nodes produced by JavaScript
+> - Page builders that generate bloated HTML code
+> - Copy-pasted text in a WYSIWYG editor
+> 
+> Is it possible that Gatsby had some limitations and that is the main reason that we have a large DOM size? So I would ask you are you familiar with the Gatsby site that is about how to improve your website performance? Maybe you are but I want to be sure. I share you link below:
+> 
+> - [Gatsby: Improving Site Performance](https://www.gatsbyjs.com/docs/how-to/performance/improving-site-performance/)
+> - [FreeCodeCamp: Gatsby Perfect Lighthouse Score](https://www.freecodecamp.org/news/gatsby-perfect-lighthouse-score/)
+> 
+> I think what we should do is to:
+> - Improve page rendering with content visibility.\
+> _The CSS content-visibility property tells a browser to skip styling, layout, and paint until you need it which could lessen the impact of the excessive node size._
+> - Split large pages into multiple pages.\
+> Splitting large pages into multiple pages might reduce the number of DOM nodes when the content itself created many DOM nodes.
+> - Implement infinite scroll.
+> 
+> What do you think ?

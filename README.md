@@ -219,7 +219,8 @@ Related article:
 - The page response time of 0.47 seconds is longer than the recommended limit of 0.4 seconds. A high response time unnecessarily slows down search engine crawling and results in bad user experience as well.
   - **Note:** I think it depends on network load, location and other aspects. I've run a few [Web.dev](https://web.dev) 
   performance tests and most of the time it's under `400ms`. Check [this report](./web-dev-tests/app.sellusyourjewelry.com_2022-04-01_15-34-46.html).\
-    What are action points in this matter? Should we change the provider
+  What are action points in this matter? Should we change the provider?
+  - **Jacek:** I think we can skip this
 - This page loads 9 JavaScript files. This may affect the load time negatively.
   - **Note:** Explained above, in the SEO Audit - Page 2 first Action Point
 - This page does not require any CSS files.
@@ -229,15 +230,21 @@ Related article:
 
 - This page has only a few links from other websites.
   - **Note:** What does it mean? Is this an action point or not?
+  - **Jacek:** I think not (it's not an AP), as you said it's a staging site
 - This page only has backlinks from 1 referring domains.
   - **Note:** What does it mean? Is this an action point or not? Keep in mind, that this (app.sellusyourjewelry.com) is a staging site.
+  - **Jacek:** I think not (it's not an AP), as you said it's a staging site
 - This page only has 2 backlinks.
   - **Note:** What does it mean? Is this an action point or not? Keep in mind, that this (app.sellusyourjewelry.com) is a staging site.
+  - **Jacek:** I think not (it's not an AP), as you said it's a staging site
 - This page only has few backlinks from 1 different ip addresses.
   - **Note:** What does it mean? Is this an action point or not? Keep in mind, that this (app.sellusyourjewelry.com) is a staging site.
+  - **Jacek:** I think not (it's not an AP), as you said it's a staging site
 - The page has 0 shares, comments and likes on Facebook.
   - **Note:** What does it mean? Is this an action point or not? Keep in mind, that this (app.sellusyourjewelry.com) is a staging site.
+  - **Jacek:** I think not (it's not an AP), as you said it's a staging site
 - This website is listed on Webwiki.
+
 
 ## Lighthouse reports 
 
@@ -315,6 +322,7 @@ $ curl -I -H "accept:*/*" -X HEAD https://cdn.sellusyourjewelry.com/w/2016/02/w5
 content-type: image/jpeg
 ```
 
+
 ##  SEO Report - Apr 5th
 
 [Check this file](./external-audit/SEOReport.xlsx)
@@ -366,6 +374,29 @@ Allow: *.js
 Allow: *.css
 ```
 
+So we have user-agents like this:
+
+```
+User-agent: googlebot-image
+User-agent: googlebot-mobile
+User-agent: MSNBot
+User-agent: Slurp
+User-agent: Teoma
+User-agent: Gigabot
+User-agent: Robozilla
+User-agent: Nutch
+User-agent: ia_archiver
+User-agent: baiduspider
+User-agent: naverbot
+User-agent: yeti
+User-agent: yahoo-mmcrawler
+User-agent: psbot
+```
+
+but I think you should only allow CSS and js and remove the disallow option and then I will check again. 
+
+- [x] **Action Point:** _Greg_: Done
+
 ### 1 page has low text-HTML ratio      
 > Your text to HTML ratio indicates the amount of actual text you have on your webpage compared to the amount of code. This issue is triggered when your text to HTML is 10% or less.
 > 
@@ -380,7 +411,7 @@ Allow: *.css
 - **Note**: I don't think that the ratio `0.04` is accurate. Please, recheck the tool that you use. Two independent methods
  give me the text / HTML ratio at the level of about `12%`
   - [SiteGuru - Text to HTML ratio](https://www.siteguru.co/seo-academy/text-to-html-ratio): `12.4%`
-  - Direct approach (using console / inspect mode):\
+  - Direct approach (using console / inspect mode):
  ```javascript
 (Math.round(10000 * document.getElementsByTagName('body')[0].outerText.length / document.getElementsByTagName('body')[0].outerHTML.length ) / 100 ) + '%'
 12.87%
@@ -393,4 +424,5 @@ Allow: *.css
 |------------------------------------|------------------------------------------------------------------|-------------------------------------------------------------------|-------------|
 | https://app.sellusyourjewelry.com/ | https://app.sellusyourjewelry.com/what-are-you-looking-to-sell-2 | https://app.sellusyourjewelry.com/what-are-you-looking-to-sell-2/ | 301         |
 
-- **Note**: I don't see any internal link without trailing slashes. Can you tell me where did you find the above link?
+- **Note**: I don't see any internal link without trailing slashes. Can you tell me where you find the above link?
+- **Jacek:** Yes, I think is some misinterpretation with / by the tool that I used.
