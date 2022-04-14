@@ -426,3 +426,62 @@ but I think you should only allow CSS and js and remove the disallow option and 
 
 - **Note**: I don't see any internal link without trailing slashes. Can you tell me where you find the above link?
 - **Jacek:** Yes, I think is some misinterpretation with / by the tool that I used.
+
+## Minimize main-thread work
+
+> Ok. I will try to explain.
+> 
+> The browser's renderer process is what turns your code into a web page that your users can interact with. By default, the main thread of the renderer process typically handles most code: it parses the HTML and builds the DOM, parses the CSS and applies the specified styles, and parses, evaluates, and executes the JavaScript.
+> 
+> The main thread also processes user events. So, any time the main thread is busy doing something else, your web page may not respond to user interactions, leading to a bad experience.
+>
+> So because I'm not familiar with your code I think you should consider some general recommendations :
+> - You can remove all of the scrolling animations (If you have some scrolling animations)
+>> **Greg**: I don't use any scrolling animations.
+> - You can use react-slick for the Hero, and you can add the lazyLoad prop to do the trick.
+>> **Greg**: I don't have a carousel for the Hero, for other carousels I use this approach: https://web.dev/carousel-best-practices/
+>  - Also, you can try to stop using react-media and just used plain 'ol display: none for the Hero media queries.
+>> **Greg**: I don't use react-media
+> - For Typekit, you can remove the oblique version of the fonts. But the biggest difference is the use of WebFont Loader instead of using the link that Typekit gave.
+>> **Greg**: I don't use Typekit, I have a Google font - Lato with 400 and 700 weight, without an oblique version.
+> 
+>> **Greg**: I would appreciate more suggestions for this point.
+>> 
+>> Of course, I'll recheck the guidelines from
+>>
+>> https://www.gatsbyjs.com/docs/how-to/performance/improving-site-performance/
+>> 
+>> https://www.freecodecamp.org/news/gatsby-perfect-lighthouse-score/
+
+Already implemented optimizations:
+- **Consider using the Preact plugin** - we us it since the beginning
+- **If you’re using a CSS-in-JS library, use the Gatsby plugin** - it was never used 
+- **Optimize fonts**:
+  - Prefer `woff2` - it's done
+  - Use latin subsets only - we do it
+- **Optimize Images * Media**:
+  - **Use Gatsby Plugin Image** to:
+    - delay non-essential fork for images
+    - provide placeholder during image fetch
+    - minimize image file size to reduce request roundtrip time
+- **Resource Requests & CDN Configuration**
+  - _Load critical assets from your main domain where possible_. Some people use another domain for their images. This can have a 300ms delay when it comes to LCP compared to loading it from the main CDN. This is sometimes necessitated by company policies; try to avoid it if possible.\
+    **NOTE:** we use cdn.sellusyourjewelry.com for images and media but not on a homepage
+  - _Preconnect to subdomains_
+  - _Utilize Gatsby Link_
+  - _Implement proper CDN caching policies_
+
+Possible optimizations:
+- **Optimize fonts**:
+  - [ ] **Action Point**: **Self-host rather than installing from an external CDN** _Having the font file available locally will save a trip over the network and reduce blocking time._
+**On critical paths, lazy-load below-the-fold components**
+> One way you can do this is to lazy-load below-the-fold components using loadable-components. loadable-components is the recommended lazy-loading solution for all server-side-rendered React applications, including Gatsby websites.
+
+- [ ] **Action Point:** Check impact of using `loadable-components` 
+
+ 
+Check missing images:
+- "https://cdn.sellusyourjewelry.com/w/2022/04/W523619-girard-perregaux-ferrari-8020-stainless-steel-n-a-dial-37-5mm-automatic-watch-500x500-z.jpeg",
+- "https://cdn.sellusyourjewelry.com/w/2022/04/Vacheron-Constantin-Overseas-49150.B01R.jpg",
+- "https://cdn.sellusyourjewelry.com/w/2022/04/W523619-girard-perregaux-ferrari-8020-stainless-steel-n-a-dial-37-5mm-automatic-watch-500x500-z.jpeg",
+- "https://cdn.sellusyourjewelry.com/w/2022/04/Vacheron-Constantin-Overseas-49150.B01R.jpg"
